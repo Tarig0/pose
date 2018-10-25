@@ -29,6 +29,9 @@ namespace Pose.Helpers
 
         public static int GetIndexOfMatchingShim(MethodBase methodBase, Type type, object obj)
         {
+            if (methodBase == null)
+                return -1;
+            
             if (methodBase.IsStatic || obj == null)
                 return Array.FindIndex(PoseContext.Shims, s => s.Original == methodBase);
 
